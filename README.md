@@ -56,7 +56,6 @@ JSF,hold,languages & frameworks,FALSE,"We continue to see teams run into trouble
 ***Note:*** The CSV file parsing is using D3 library, so consult the D3 documentation for the data format details.
 
 ### Building the radar
-
 Paste the URL in the input field on the home page.
 
 That's it!
@@ -73,6 +72,18 @@ The app uses [Tabletop.js](https://github.com/jsoma/tabletop) to fetch the data 
 
 The application uses [webpack](https://webpack.github.io/) to package dependencies and minify all .js and .scss files.
 
+#### Dockerised Local file
+```
+sudo docker build . --no-cache -t reclusive/build-your-own-radar
+sudo docker run --rm -p 8080:80 -e SERVER_NAMES="localhost 127.0.0.1" reclusive/build-your-own-radar
+```
+
+The no-cache option _will_ take longer, you can remove it if you are confident.  
+
+Or on Docker toolbox for Windows
+```
+docker run --rm -p 8080:80 -e SERVER_NAMES="localhost 192.168.99.100" reclusive/build-your-own-radar
+```
 ## Docker Image
 We have released BYOR as a docker image for our users. The image is available in our [DockerHub Repo](https://hub.docker.com/r/wwwthoughtworks/build-your-own-radar/). To pull and run the image, run the following commands.
 

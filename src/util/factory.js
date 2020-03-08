@@ -205,7 +205,11 @@ const GoogleSheetInput = function () {
     var queryString = window.location.href.match(/sheetId(.*)/)
     var queryParams = queryString ? QueryParams(queryString[0]) : {}
 
-    if (domainName && queryParams.sheetId.endsWith('csv')) {
+
+    if (Object.keys(queryParams).length == 0) {
+      var sheet = CSVDocument(window.location.origin + '/techradar.csv');
+      sheet.init().build();
+    } else if (domainName && queryParams.sheetId.endsWith('csv')) {
       sheet = CSVDocument(queryParams.sheetId)
       sheet.init().build()
     } else if (domainName && domainName.endsWith('google.com') && queryParams.sheetId) {

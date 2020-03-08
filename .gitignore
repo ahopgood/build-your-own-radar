@@ -8,6 +8,7 @@ dist
 coverage/
 
 .idea/
+.vagrant/
 .DS_Store
 
 spec/end_to_end_tests/reports/
