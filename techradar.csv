@@ -1,82 +1,87 @@
 name,ring,quadrant,isNew,description
-Tech Radar,"1 - Adopt",Techniques,TRUE,"Being able to map out assessment, trialling, adoption and retirement phases of technologies within an organisation provides clarity for teams.
+Tech Radar,1 - Adopt,Techniques,TRUE,"Being able to map out assessment, trialling, adoption and retirement phases of technologies within an organisation provides clarity for teams.
 Knowing when to invest time in learning or using a technology is valuable and prevents multiple teams researching solutions to the same problem when it may already be on the radar."
-Java 11,"1 - Adopt",Languages-and-frameworks,TRUE,"Java 11 is the LTS version of Java that will be supported until Septermber 2026.
+Java 11,1 - Adopt,Languages-and-frameworks,TRUE,"Java 11 is the LTS version of Java that will be supported until Septermber 2026.
 This is the best version to ensure business continuity and timely security updates."
-Docker,"1 - Adopt",Platforms,TRUE,Containers provide the means for reliable configuration isolated from other services.
-Dependency security scanning,"1 - Adopt",Techniques,FALSE,"Java programs have a plethora of dependencies, scanning via tools such as <a href=""https://owasp.org/www-project-dependency-check/"">OWASP's Depdency Check</a> allow for the hierarchy to be scanned and mapped to existing CVEs (Common Vulnerabilities and Exposures)."
-Karate,"2 - Trial",Tools,FALSE,"Cucumber tests have proven their worth in the arena of acceptance level tests, <a href=""https://intuit.github.io/karate/"">Karate</a> provides a REST specific DSL in the same style as cucumber.
+Docker,1 - Adopt,Platforms,TRUE,"Containers provide the means for reliable application setup isolated from other services.
+The idempotent filesystem (UnionFS) results in clear changelists and an environment that is self-contained but resource efficient thanks to the use of Linux namespaces."
+Dependency security scanning,1 - Adopt,Techniques,FALSE,"Java programs have a plethora of dependencies, scanning via tools such as <a href=""https://owasp.org/www-project-dependency-check/"">OWASP's Depdency Check</a> allows for the hierarchy to be scanned and mapped to existing CVEs (Common Vulnerabilities and Exposures)."
+Karate,2 - Trial,Tools,FALSE,"Cucumber tests have proven their worth in the arena of acceptance level tests, <a href=""https://intuit.github.io/karate/"">Karate</a> provides a REST specific DSL in the same style as cucumber.
 Specifically Karate allows you to test verbage, status codes, headers and much more in your REST APIs to ensure your contract has not regressed and is performing as expected."
-Service Mesh,"3 - Assess",Techniques,TRUE,"A service mesh such as Consul can assist with service discoverability and cross cutting concerns
+Service Mesh,3 - Assess,Techniques,TRUE,"A service mesh such as Consul can assist with service discoverability and cross cutting concerns
 "
-Puppet,"3 - Assess",Platforms,FALSE,"Idempotent and read-only containerisation has reduced the need to active configuration management through tools such as puppet.
-The overhead and complexity of managing depedencies and state across a system with multiple purposes outweighs the benefits.
+Puppet,4 - Hold,Platforms,FALSE,"Idempotent and read-only containerisation has reduced the need to have active configuration management through tools such as puppet.
+The overhead and complexity of managing dependencies and state across a system with multiple purposes outweighs the benefits.
 Puppet still has a place for legacy systems that need migrating to micro-services and/or containers.
 "
-Java 8,"3 - Assess",Languages-and-frameworks,FALSE,Java 8 has been end of life since January 2019 and no longer recieves security updates.
-Docker-Compopse,"3 - Assess",Tools,FALSE,"Using docker-compose allows you to orchestrate all your containers via a single configuration, this lends itself to reduced external port mappings as docker compose supports internal docker networks allowing services to communicate internally without needing to open external ports."
-Container security scanning,"3 - Assess",Techniques,TRUE,"<p>The continued adoption of containers for deployments, especially <a href=""https://www.thoughtworks.com/radar/platforms/docker"">Docker</a>, has made <strong>container security scanning</strong> a must-have technique and we've moved this technique into Adopt to reflect that. Specifically, containers introduced a new path for security issues; it's vital that you use tools to scan and check containers during deployment. We prefer using automated scanning tools that run as part of the deployment pipeline.</p>"
-Virtual Machine per Service,"4 - Hold",Techniques,FALSE,"Dedicating an entire virtual machine to a single service has proven to be more secure that co-hosting multiple services on one machine but also more resource intensive.
+Java 8,4 - Hold,Languages-and-frameworks,FALSE,Java 8 has been end of life since January 2019 and no longer recieves security updates.
+Docker-Compose,3 - Assess,Tools,FALSE,"Using docker-compose allows you to orchestrate all your containers via a single configuration, this lends itself to reduced external port mappings as docker compose supports internal docker networks allowing services to communicate internally without needing to open external ports."
+Container security scanning,3 - Assess,Techniques,TRUE,"The continued adoption of containers for deployments, especially <a href=""https://www.thoughtworks.com/radar/platforms/docker"">Docker</a>, has made <strong>container security scanning</strong> a must-have technique and we've moved this technique into Adopt to reflect that. Specifically, containers introduced a new path for security issues; it's vital that you use tools to scan and check containers during deployment. We prefer using automated scanning tools that run as part of the deployment pipeline."
+Virtual Machine per Service,4 - Hold,Techniques,FALSE,"Dedicating an entire virtual machine to a single service has proven to be more secure that co-hosting multiple services on one machine but also more resource intensive.
 Where possible it is recommended to use containerisation to better isolate and utilise resources."
-Traefik,"3 - Assess",Tools,TRUE,"A reverse proxy/gateway is vitally important for secure and accessible services.
+Traefik,3 - Assess,Tools,TRUE,"A reverse proxy/gateway is vitally important for secure and accessible services.
 In a world of scalable and transient services Traefik's auto discovery via labels massively reduces the overhead of managing your service discoverability.
 Optional support for TLS can also provide seamless security for new services, reducing deployment time considerably.
 "
-Java 6,"4 - Hold",Languages-and-frameworks,FALSE,"Java 6 has been end of life since February 2013, no longer recieves security updates and lacks many modern functional features."
-Bookstack,"2 - Trial",Tools,TRUE,"Good documentation can save large amounts of time and improve onboarding of new team members.
+Java 6,4 - Hold,Languages-and-frameworks,FALSE,"Java 6 has been end of life since February 2013, no longer recieves security updates and lacks many modern functional features."
+Bookstack,2 - Trial,Tools,TRUE,"Good documentation can save large amounts of time and improve onboarding of new team members.
 Bookstack provides persistent storage of documentation via a MySQL database (allowing for easy backups).
 It also provides rich editing functions and a markdown editor too.
 The ability to organise your documentation into pages, chapters, books and shelves provides a better organisational hierarchy than many wikis. Search is also provided as well as tagging to allow for more targeted discovery.
 Being self-hosted also means you retain control over your data."
-Secrets as a Service,"3 - Assess",Techniques,TRUE,"Secrets as a Service enables you to decouple your service and configuration from your valuable secrets.
+Secrets as a Service,3 - Assess,Techniques,TRUE,"Secrets as a Service enables you to decouple your service and configuration from your valuable secrets.
 No longer do you need to worrry about committing valuable secrets to source control.
 Services such as <a href=""https://www.vaultproject.io/"">Vault</a> allow fine grained control of permissions that are only provided at runtime."
-HTTP2,"3 - Assess",Platforms,TRUE,"HTTP2 brings speed and security benefits to the web.
+HTTP2,3 - Assess,Platforms,TRUE,"HTTP2 brings speed and security benefits to the web.
 It requires HTTPS to function fully so it does somewhat rely on the adoption of TLS via LetsEncrypt"
-Lombok,"2 - Trial",Tools,TRUE,"<a href=""https://projectlombok.org/"">Lombok</a> allows post compile generation of common Java bean boilerplate; getters, setters, constructors, equals. toString, hashcode and builders.
+Lombok,2 - Trial,Languages-and-frameworks,TRUE,"<a href=""https://projectlombok.org/"">Lombok</a> allows post compile generation of common Java bean boilerplate; getters, setters, constructors, equals. toString, hashcode and builders.
 This reduces the size of your Java source files, removes boilerplate, reduces manual errors and increases readability of your code.
 Now that Lombok plays well with code coverage tooling its convenience no longer comes with the drawback of coverage issues.
 "
-Atomic Design,"3 - Assess",Techniques,TRUE,"<a href=""https://atomicdesign.bradfrost.com/""><Atomic design</a> principles aim to solve a lot of the reuse and consistency issues that plague front end development."
-LetsEncrypt,"2 - Trial",Platforms,TRUE,"LetsEncrypt makes rolling out certificates for your services easy.
+Atomic Design,3 - Assess,Techniques,TRUE,"<a href=""https://atomicdesign.bradfrost.com/"">Atomic design</a> principles aim to solve a lot of the reuse and consistency issues that plague front end development."
+LetsEncrypt,2 - Trial,Platforms,TRUE,"LetsEncrypt makes rolling out certificates for your services easy.
 No more paying for certificates or using that as an excuse not to secure your development environments."
-MySQL 5.7,"1 - Adopt",Platforms,TRUE,"MySQL 5.6 is no longer actively supported on the latest versions of Ubunutu or Debian.
-MySQL 5.7 also brings better support for utf8-mb4 and no longer has issues or special configuration required for index names lengths."
+MySQL 5.7,1 - Adopt,Platforms,TRUE,"MySQL 5.6 is no longer actively supported on the latest versions of Ubunutu or Debian.
+MySQL 5.7 also brings better support for utf8-mb4 and no longer has issues or special configuration required for index name lengths."
 "Ubuntu 18.04
-","1 - Adopt",Platforms,FALSE,"Ubuntu 18.04 is the latest LTS, it is required to make use of LetsEncrypt's certbot, latest versions of apache and security updates.
+",1 - Adopt,Platforms,FALSE,"Ubuntu 18.04 is the latest LTS, it is required to make use of LetsEncrypt's certbot, latest versions of apache and security updates.
 Hardware updates are provided until August 2020.
 Maintenance updates are proviced util April 2023.
 Our puppet based infrastructure should support this as a minimum.
 "
-Ubuntu 20.04,"3 - Assess",Platforms,TRUE,"Ubuntu 20.04 will be the next LTS release, we should assess its stability during the transistion window (April - August 2020) where Canonical provides support for both 18.04 and 20.04 LTS releases.
+Ubuntu 20.04,3 - Assess,Platforms,TRUE,"Ubuntu 20.04 will be the next LTS release, we should assess its stability during the transistion window (April - August 2020) where Canonical provides support for both 18.04 and 20.04 LTS releases.
 Our docker based infrastructure should support this as a minimum."
-Ubuntu 15.10,"4 - Hold",Platforms,FALSE,"Ubuntu 15.10 was an interim release with only 8 months of support back in October 2015.
+Ubuntu 16.04,4 - Hold,Platforms,FALSE,"Ubuntu 16.04 is the previous Long Term Support (LTS) release.
+Hardware updates have stopped. Maintenance updates will continue until 2021.
+Any legacy projects still using Ubuntu 15.10 should be upgraded to 16.04 at the <b>bare minimum</b>, ideally upto 18.04 if possible.
+"
+Ubuntu 15.10,4 - Hold,Platforms,FALSE,"Ubuntu 15.10 was an interim release with only 8 months of support back in October 2015.
 There are no security updates for this release anymore.
 The main software repositories are also not available so even old software cannot be installed on these systems by default.
 Migration away from 15.10 on our puppet infrastructure should be a priority.
 No new projects or code should use 15.10.
 "
-Apache gateway,"4 - Hold",Tools,FALSE,"Apache is currently actively used as our reverse proxy/gateway technology.
+Apache gateway,4 - Hold,Tools,FALSE,"Apache is currently actively used as our reverse proxy/gateway technology.
 Configuration relies on our ageing puppet configuration-as-code.
-With our move towards microservices and quick deployment the lack of auto-discovery routes and configuration code changes needing to be pushed the inflexibility of Apache is starting to show.
+With our move towards microservices and quick deployment, the lack of auto-discovery routes and the amount of configuration code changes needing to be pushed is starting to show the inflexibility of Apache.
 New routes for new services should either be proxied through to Traefik or Traefik should be placed in front of our existing gateway and delegate old routes to Apache whilst upgrading existing routes where possible.
 "
-NetData,"3 - Assess",Platforms,TRUE,"<a href=""https://www.netdata.cloud/"">NetData</a> can provide bare metal monitoring of our server resources which is vital given our limited resource envalope.
+NetData,3 - Assess,Platforms,TRUE,"<a href=""https://www.netdata.cloud/"">NetData</a> can provide bare metal monitoring of our server resources which is vital given our limited resource envalope.
 The move to Dockerisation to better utilise resources requires us to have a baseline of our existing services and VM usage to gauge what and when we can introduce new services."
-JLink,"3 - Assess",Languages-and-frameworks,TRUE,"Since the advent of Java 9 there has been the possibility to create a custom JVM for your services based on what modules they use.
+JLink,3 - Assess,Languages-and-frameworks,TRUE,"Since the advent of Java 9 there has been the possibility to create a custom JVM for your services based on what modules they use.
 This capability coupled with the Dockerisation of our services leads to the possibility of creating much smaller containers.
 What additional costs to our build pipeline this incurs has yet to be seen."
-Vagrant,"1 - Adopt",Platforms,FALSE,"Vagrant provides a quick and easy means to create a virtual machine with the tooling you require for a project regardless of the machine you are working on.
+Vagrant,1 - Adopt,Platforms,FALSE,"Vagrant provides a quick and easy means to create a virtual machine with the tooling you require for a project regardless of the machine you are working on.
 Despite the move to containerisation Vagrant still has an important role to play in local development and prototyping quickly since you get the power of a full OS with fast teardown and build."
-Flyway,"1 - Adopt",Languages-and-frameworks,FALSE,"<a href=""https://flywaydb.org/"">Flyway</a> allow management of your database schema through code.
+Flyway,1 - Adopt,Languages-and-frameworks,FALSE,"<a href=""https://flywaydb.org/"">Flyway</a> allow management of your database schema through code.
 No longer do you need to worry about the differences between dev and production databases.
 "
-Choas Engineering,"3 - Assess",Techniques,TRUE,"<a href=""https://en.wikipedia.org/wiki/Chaos_engineering"">Chaos Engineering</a> has been around since 2011, it forces you to face unpredictable events such as server being switched off as a regular event instead of a one-off in order to promote a resiliency first mindset with your services and infrastructure.
+Choas Engineering,3 - Assess,Techniques,TRUE,"<a href=""https://en.wikipedia.org/wiki/Chaos_engineering"">Chaos Engineering</a> has been around since 2011, it forces you to face unpredictable events such as a server being switched off, as a regular event instead of a one-off in order to promote a resiliency first mindset with your services and infrastructure.
 <a href=""https://principlesofchaos.org/?lang=ENcontent"">Principles of Choas</a> highlights a working methodology for introducing choas engineering.
 Tooling such as <a href=""https://chaostoolkit.org/"">ChoasToolkit</a> or Netflix's <a href=""https://github.com/netflix/chaosmonkey"">Choas Monkey</a> provide the means to do Chaos Engineering yourself."
-Nomad,"3 - Assess",Platforms,TRUE,"At some point we shall move beyond the number of services and containers that can be actively orchestrated via a single docker-compose file.
+Nomad,3 - Assess,Platforms,TRUE,"At some point we shall move beyond the number of services and containers that can be actively orchestrated via a single docker-compose file.
 If moving beyond a single machine host then a docker-compose file is even more lacking.
 When this happens we need a distributed orchestrator that allows for multi machine/data centre deployments and works well with a service mesh such as consul and secrets as a service such as vault.
 Nomad also allows for scaling of services to be distributed across hosts, the API allows for one time scale ups, A/B deployments, rolling deployments and roll backs."
-Kanboard,"2 - Trial",Tools,FALSE,"Project management is difficult, especially when time is a constraint.
+Kanboard,2 - Trial,Tools,FALSE,"Project management is difficult, especially when time is a constraint.
 Kanboard allows for all tasks to be ticketed and in-flight tasks can be seen in one view (as per kanban princples)."
