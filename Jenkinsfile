@@ -14,6 +14,16 @@ pipeline {
                 sh 'docker build . -t ${DOCKER_REGISTRY}/reclusive/build-your-own-radar:${VERSION}'
             }
         }
+        stage('Docker Image Vulnerability Scan') {
+            agent { label 'Docker && Grype' }
+            steps {
+                git credentialsId: 'github_token', url: 'https://github.com/ahopgood/build-your-own-radar.git', branch: '${BRANCH_NAME}'
+                sh'''
+                    grype version
+                    grype ${DOCKER_REGISTRY}/reclusive/build-your-own-radar:${VERSION} -c .grype.yaml
+                '''
+            }
+        } //End Vulnerability Scan Stage
         stage('push') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
