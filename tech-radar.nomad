@@ -26,6 +26,15 @@ job "tech-radar" {
 
       ]
 
+      check {
+        expose   = true
+        type     = "http"
+        interval = "10s"
+        timeout  = "2s"
+        path     = "/"
+        name = "${NOMAD_GROUP_NAME}-via-connect"
+      }
+
       connect {
         sidecar_service {}
       }
