@@ -2,7 +2,7 @@ pipeline {
     agent { label 'Docker' }
     environment {
                 HASH = sh(script: 'git rev-parse --short HEAD | tr -d "\n"', returnStdout: true)
-                DATE = sh(script: 'date "+%Y%m%d-%H%M"', returnStdout: true)
+                DATE = sh(script: 'date "+%Y%m%d-%H%M" | tr -d "\n"', returnStdout: true)
                 VERSION = "${HASH}-${DATE}"
     }
     stages {
@@ -41,6 +41,17 @@ pipeline {
                     sh'''
                         nomad -version
                         levant -version
+
+                        export NOMAD_ADDR="http://${NOMAD}:4646"
+                        export DOCKER_REGISTRY_ADDRESS=${DOCKER_REGISTRY}
+                        export  DOCKER_REGISTRY_USERNAME="${USERNAME}"
+                        export DOCKER_REGISTRY_PASSWORD="${PASSWORD}"
+                        export  SUB_DOMAIN=""
+                        export TECH_RADAR_VERSION=${VERSION}
+
+                        levant render -log-level debug -var-file ".env-template.yaml" tech-radar.nomad
+                        levant plan -log-level debug -var-file ".env-template.yaml" tech-radar.nomad
+                        levant deploy -log-level debug -var-file ".env-template.yaml" tech-radar.nomad
                     '''
                 }
             }
