@@ -37,10 +37,12 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh'''
-                    nomad -version
-                    levant -version
-                '''
+                withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh'''
+                        nomad -version
+                        levant -version
+                    '''
+                }
             }
         }
     }
