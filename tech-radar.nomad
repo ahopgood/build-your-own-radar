@@ -14,10 +14,10 @@ job "tech-radar" {
       tags = [
         "app",
         "traefik.http.routers.techradar.entrypoints=web",
-        "traefik.http.routers.techradar.rule=Host(`tech-radar.[[ or (env "SUB_DOMAIN") .subdomain ]].alexanderhopgood.com`)",
+        "traefik.http.routers.techradar.rule=Host(`tech-radar.[[ or (env "SUB_DOMAIN") .subdomain ]]alexanderhopgood.com`)",
         "traefik.http.routers.techradar.middlewares=local-network@consulcatalog,https-redirect@consulcatalog",
         "traefik.http.routers.techradar-secure.entrypoints=secure",
-        "traefik.http.routers.techradar-secure.rule=Host(`tech-radar.[[ or (env "SUB_DOMAIN") .subdomain ]].alexanderhopgood.com`)",
+        "traefik.http.routers.techradar-secure.rule=Host(`tech-radar.[[ or (env "SUB_DOMAIN") .subdomain ]]alexanderhopgood.com`)",
         "traefik.http.routers.techradar-secure.middlewares=local-network@consulcatalog",
         "traefik.http.routers.techradar-secure.tls=true",
         "traefik.http.routers.techradar-secure.tls.certresolver=myletsencryptresolver",
@@ -35,7 +35,7 @@ job "tech-radar" {
 
       driver = "docker"
       env {
-        SERVER_NAMES = "localhost 127.0.0.1 tech-radar.[[ or (env "SUB_DOMAIN") .subdomain ]].alexanderhopgood.com"
+        SERVER_NAMES = "localhost 127.0.0.1 tech-radar.[[ or (env "SUB_DOMAIN") .subdomain ]]alexanderhopgood.com"
       }
 
       config {
