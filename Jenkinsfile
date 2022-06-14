@@ -44,9 +44,9 @@ pipeline {
 
                         export NOMAD_ADDR="http://${NOMAD}:4646"
                         export DOCKER_REGISTRY_ADDRESS=${DOCKER_REGISTRY}
-                        export  DOCKER_REGISTRY_USERNAME="${USERNAME}"
+                        export DOCKER_REGISTRY_USERNAME="${USERNAME}"
                         export DOCKER_REGISTRY_PASSWORD="${PASSWORD}"
-                        export  SUB_DOMAIN=""
+                        export SUB_DOMAIN=""
                         export TECH_RADAR_VERSION=${VERSION}
 
                         levant render -log-level debug -var-file ".env-template.yaml" tech-radar.nomad
