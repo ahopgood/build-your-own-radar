@@ -16,14 +16,10 @@ pipeline {
         }
         stage('Docker Image Vulnerability Scan') {
             steps {
-                #git credentialsId: 'github_token', url: 'https://github.com/ahopgood/build-your-own-radar.git', branch: '${BRANCH_NAME}'
-                withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh'''
-                        echo ${PASSWORD} | docker login --username ${USERNAME} --password-stdin  https://${DOCKER_REGISTRY}
-                        grype version
-                        grype ${DOCKER_REGISTRY}reclusive/build-your-own-radar:${VERSION} -c .grype.yaml
-                    '''
-                }
+                sh'''
+                    grype version
+                    grype ${DOCKER_REGISTRY}reclusive/build-your-own-radar:${VERSION} -c .grype.yaml
+                '''
             }
         } //End Vulnerability Scan Stage
         stage('push') {
