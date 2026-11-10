@@ -48,7 +48,7 @@ job "tech-radar" {
       }
 
       config {
-        image = "[[ or (env "DOCKER_REGISTRY_ADDRESS") .docker.registry.address ]]/[[ or (env "DOCKER_REGISTRY_NAMESPACE") .docker.registry.namespace ]]build-your-own-radar:[[ or (env "TECH_RADAR_VERSION") .tech_radar.version ]]"
+        image = "[[ or (env "DOCKER_REGISTRY_ADDRESS") .docker.registry.address ]][[ or (env "DOCKER_REGISTRY_NAMESPACE") .docker.registry.namespace ]]build-your-own-radar:[[ or (env "TECH_RADAR_VERSION") .tech_radar.version ]]"
         ports = ["http"]
         auth {
           username = "[[ or (env "DOCKER_REGISTRY_USERNAME") .docker.registry.username ]]"
